@@ -22,7 +22,7 @@ class EventsSpider(scrapy.Spider):
             yield {
                 "name": event.css(".event-name > a::text").get(),
                 "datetime": "".join(event.css(".event-time::text").getall()),
-                "location": event.css(".event-location::text").get(),
+                "location": "".join(event.css(".event-location::text").getall()),
                 "description": event.css(".description::text").get(),
             }
         # Find the "next page" link. If there is one, follow it and scrape
